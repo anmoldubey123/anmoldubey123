@@ -1,0 +1,107 @@
+#include<iostream>
+#include <fstream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+void mainFunction(char[], char[]);
+void reset(char[], char[]);
+void addReservation(char[], char[]);
+
+int main()
+{
+char seatsA[10];
+char seatsB[10];
+for (int i = 0; i<10; i++)
+{
+seatsA[i] = 'O';
+seatsB[i] = 'O';
+}
+mainFunction(seatsA, seatsB);
+}
+
+void mainFunction(char a[], char b[])
+{
+cout << endl;
+int ans;
+cout << "RESET RESERVATION SYSTEM" << endl;
+cout << endl;
+cout << "ADD RESERVATION" << endl;
+cout << endl;
+cout << "VISUAL SEATING CHART" << endl;
+cout << endl;
+cout << "Choose Action: (1,2,3) ";
+cin >> ans;
+if (ans == 1)
+{
+reset(a,b);
+}
+else if (ans == 2)
+{
+addReservation(a,b);
+}
+
+}
+
+void reset(char a[], char b[])
+{
+for (int i = 0; i<10; i++)
+{
+a[i] = 'O';
+b[i] = 'O';
+}
+mainFunction(a,b);
+}
+
+
+void addReservation(char a[], char b[])
+{
+int seed = time(0);
+srand(seed);
+int max = 1;
+int min = 0;
+int random = (rand() % (max - min + 1)) + min;
+int ans;
+cout << "First Class or Coach?(1,2)";
+cin >> ans;
+int i = 0;
+int check = 0;
+int check2 = 0;
+int x = 4;
+if (ans == 1)
+{
+while (check == 0)
+{
+if (a[i] == 'O')
+{
+a[i] = 'X';
+check = 1;
+}
+else if (b[i] == 'O' && check != 1)
+{
+b[i] = 'X';
+check = 1;
+}
+i++;
+}
+}
+else if(ans == 2)
+{
+while (check2 == 0)
+{
+if (a[x] == 'O')
+{
+a[x] = 'X';
+check2 = 1;
+}
+else if(b[x] == 'O' && check2 !=1)
+{
+b[x] = 'X';
+check2 = 1;
+}
+x++;
+}
+}
+
+}
