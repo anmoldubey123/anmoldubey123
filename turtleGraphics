@@ -1,0 +1,105 @@
+#include<iostream>
+#include <conio.h>
+
+using namespace std;
+
+//Function Prototypes
+void initialize(char [][25]);
+void display(char [][25]);
+void move(char [][25], char);
+
+
+//Globals
+int tr=9;
+int tc=9;
+
+int main()
+{
+
+char field[25][25];
+initialize(field);
+display(field);
+
+char dir;
+do{
+cout << "\t 8 - Move Up" << endl;
+cout << "\t 2 - Move Down" << endl;
+cout << "\t 4 - Move Left" << endl;
+cout << "\t 6 - Move Right" << endl;
+cout << "\t 0 - Exit" << endl;
+
+cout << "\t Direction to move: ";
+dir = getch();
+
+if(dir != '0')
+move(field, dir);
+
+}while(dir != '0');
+
+
+
+
+return 0;
+}
+
+
+void move(char f[][25], char dir)
+{
+f[tr][tc] = '*';
+switch(dir)
+{
+
+case '8':
+tr--;
+break;
+
+case '2':
+tr++;
+break;
+
+case '4':
+tc--;
+break;
+
+case '6':
+tc++;
+break;
+}
+
+f[tr][tc] = 'O';
+display(f);
+}
+
+
+void initialize(char f[][25])
+{
+for(int row=0; row<25; row++)
+for(int col=0; col<25; col++)
+f[row][col] = ' ';
+
+f[tr][tc] = 'O';
+}
+
+void display(char f[][25])
+{
+system("cls");
+cout << endl;
+cout << "\t";
+for(int i=0; i<27; i++)
+cout << "=";
+cout << endl;
+for(int row=0; row<25; row++)
+{
+cout << "\t|";
+for(int col=0; col<25; col++)
+{
+cout << f[row][col];
+}
+cout << "|" << endl;
+}
+cout << "\t";
+for(int i=0; i<27; i++)
+cout << "=";
+cout << endl;
+
+}
